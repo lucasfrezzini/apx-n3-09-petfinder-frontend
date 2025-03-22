@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Button from "./ui/Button";
+import InputField from "./ui/InputField";
+import FieldGroup from "./ui/FieldGroup";
+import TextareaField from "./ui/TextareaField";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+      <h1 className=" font-bold text-primary my-5">
+        Design System for PetFinder
+      </h1>
+      <hr className="my-5" />
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <h3>Lorem ipsum dolor sit amet</h3>
+      <h4>Lorem ipsum dolor sit amet</h4>
+      <h5>Lorem ipsum dolor sit amet</h5>
+      <h6>Lorem ipsum dolor sit amet</h6>
+      <hr className="my-5" />
+
+      <p className="">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+        repellendus recusandae assumenda? Illum mollitia dolore, voluptates nam
+        iusto, exercitationem fuga libero expedita ad velit dicta assumenda
+        distinctio vitae error facilis.
       </p>
+      <hr className="my-5" />
+      <div className="space-y-5">
+        <Button>Reportar pérdida</Button>
+        <Button isUnfilled isFull>
+          Reportar pérdida
+        </Button>
+        <Button isFull>Reportar pérdida</Button>
+      </div>
+      <hr className="my-5" />
+      <div className="space-y-5">
+        <FieldGroup label="Correo">
+          <InputField typeField="email" placeholder="Ingrese el correo" />
+        </FieldGroup>
+        <FieldGroup label="Contrasena">
+          <InputField
+            typeField="password"
+            placeholder="Ingrese la contrasena"
+          />
+        </FieldGroup>
+        <FieldGroup label="Nombre">
+          <InputField typeField="text" placeholder="Nombre" />
+        </FieldGroup>
+        <FieldGroup label="Mensaje">
+          <TextareaField placeholder="Ingrese su mensaje largo" />
+        </FieldGroup>
+        <Button isFull>Guardar cambios</Button>
+      </div>
+      <hr className="my-5" />
+      <div className="space-y-5">
+        <InputField typeField="password" placeholder="Ingrese la contrasena" />
+        <InputField typeField="text" placeholder="Nombre" />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
