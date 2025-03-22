@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import clsx from "clsx";
 
 interface ButtonProps {
   children: ReactNode;
@@ -17,15 +18,10 @@ export default function Button({
   isUnfilled = false,
   isFull = false,
 }: ButtonProps) {
-  return (
-    <button
-      className={`
-        ${defaultClasses} 
-        ${isUnfilled ? unfilled : filled} 
-        ${isFull ? full : ""}
-      `}
-    >
-      {children}
-    </button>
+  const styles = clsx(
+    defaultClasses,
+    isUnfilled ? unfilled : filled,
+    isFull && full
   );
+  return <button className={styles}>{children}</button>;
 }
