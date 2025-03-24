@@ -1,19 +1,25 @@
+import clsx from "clsx";
+
 interface SectionHeaderProps {
+  children: React.ReactNode;
   title: string;
   subtitle: string;
-  description: string;
+  textAlign?: string;
 }
+const defaultClasses = "md:w-md lg:w-lg";
 
 export default function SectionHeader({
+  children,
   title,
   subtitle,
-  description,
+  textAlign = "text-center",
 }: SectionHeaderProps) {
+  const styles = clsx(defaultClasses, textAlign);
   return (
-    <header className="text-center mx-auto md:w-md lg:w-lg ">
+    <header className={styles}>
       <p className=" text-primary tracking-wide text-lg">{subtitle}</p>
       <h3 className="my-4">{title}</h3>
-      <p>{description}</p>
+      {children}
     </header>
   );
 }
