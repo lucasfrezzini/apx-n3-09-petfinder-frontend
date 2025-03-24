@@ -7,7 +7,8 @@ interface ButtonProps {
   isUnfilled?: boolean;
 }
 
-const defaultClasses = "px-7 py-3 rounded-md cursor-pointer transition-all";
+const defaultClasses =
+  "px-7 py-3 rounded-(--border-radius) cursor-pointer transition-all";
 const full = "w-full";
 const filled = "bg-primary text-white hover:bg-primary-dark";
 const unfilled =
