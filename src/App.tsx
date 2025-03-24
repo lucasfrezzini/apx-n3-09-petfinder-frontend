@@ -6,6 +6,8 @@ import Badge from "./ui/Badge";
 import Avatar from "./ui/Avatar";
 import AvatarImage from "./assets/pet5.jpg";
 import SectionHeader from "./components/SectionHeader";
+import Alarm from "./ui/Alarm";
+import SectionTeam from "./components/SectionTeam";
 
 function App() {
   return (
@@ -67,10 +69,55 @@ function App() {
         <SectionHeader
           subtitle="Cerca de tu ubicacion"
           title="Mascotas perdidas recientemente"
-          description="Estas son las mascotas perdidas recient
-          emente por tu zona geografica, si viste alguna no dudes en reportar
-          "
+        >
+          <p>
+            Estas son las mascotas perdidas recient emente por tu zona
+            geografica, si viste alguna no dudes en reportar
+          </p>
+        </SectionHeader>
+      </div>
+      <hr className="my-5" />
+      <div className="space-y-5">
+        <Alarm title="Bravo!" description="Descripcion" />
+        <Alarm
+          type="alert"
+          title="Oops! Error encontrado"
+          description="Descripcion"
         />
+        <Alarm
+          type="warning"
+          title="Cuidado! Algo anda mal"
+          description="Descripcion"
+        />
+        <Alarm
+          type="info"
+          title="Sabias?"
+          description="Estas son las mascotas perdidas recient emente por tu zona geografica, si viste alguna no dudes en reportar"
+        />
+      </div>
+      <hr className="my-5" />
+      <div className="space-y-5">
+        <SectionTeam>
+          <SectionHeader
+            subtitle="Quienes somos"
+            textAlign="text-left"
+            title="Uniendo comunidades para salvar peluditos"
+          >
+            <p className="mb-4">
+              En Pet Rescue nos apasiona ayudar a las mascotas a regresar a
+              casa. Entendemos el dolor y la ansiedad que puede causar perder a
+              un ser querido, por eso creamos una plataforma que conecta a la
+              comunidad para facilitar el reencuentro.
+            </p>
+            <p className="mb-6">
+              Nuestra misión es ser una herramienta confiable y fácil de usar
+              para que las mascotas regresen a casa lo más rápido posible.
+              Queremos que nuestra app sea un lugar donde la comunidad se una
+              para ayudar a aquellos que más lo necesitan.
+            </p>
+            <Button>Reportar mascota</Button>
+          </SectionHeader>
+        </SectionTeam>
       </div>
     </>
   );
