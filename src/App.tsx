@@ -8,117 +8,123 @@ import AvatarImage from "./assets/pet5.jpg";
 import SectionHeader from "./components/SectionHeader";
 import Alarm from "./ui/Alarm";
 import SectionTeam from "./components/SectionTeam";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
-      <h1 className=" text-primary my-5">Design System for PetFinder</h1>
-      <hr className="my-5" />
-      <h2>Lorem ipsum dolor sit amet</h2>
-      <h3>Lorem ipsum dolor sit amet</h3>
-      <h4>Lorem ipsum dolor sit amet</h4>
-      <h5>Lorem ipsum dolor sit amet</h5>
-      <h6>Lorem ipsum dolor sit amet</h6>
-      <hr className="my-5" />
+      <Navbar />
+      <div className="container mt-[60px] p-5 mx-auto">
+        <h1 className=" text-primary my-5">Design System for PetFinder</h1>
+        <hr className="my-5" />
+        <h2>Lorem ipsum dolor sit amet</h2>
+        <h3>Lorem ipsum dolor sit amet</h3>
+        <h4>Lorem ipsum dolor sit amet</h4>
+        <h5>Lorem ipsum dolor sit amet</h5>
+        <h6>Lorem ipsum dolor sit amet</h6>
+        <hr className="my-5" />
 
-      <p className="">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-        repellendus recusandae assumenda? Illum mollitia dolore, voluptates nam
-        iusto, exercitationem fuga libero expedita ad velit dicta assumenda
-        distinctio vitae error facilis.
-      </p>
-      <hr className="my-5" />
-      <div className="space-y-5">
-        <Button>Reportar pérdida</Button>
-        <Button isUnfilled isFull>
-          Reportar pérdida
-        </Button>
-        <Button isFull>Reportar pérdida</Button>
-      </div>
-      <hr className="my-5" />
-      <div className="space-y-5">
-        <FieldGroup label="Correo">
-          <InputField typeField="email" placeholder="Ingrese el correo" />
-        </FieldGroup>
-        <FieldGroup label="Contrasena">
-          <InputField
-            typeField="password"
-            placeholder="Ingrese la contrasena"
-          />
-        </FieldGroup>
-        <FieldGroup label="Nombre">
-          <InputField typeField="text" placeholder="Nombre" />
-        </FieldGroup>
-        <FieldGroup label="Mensaje">
-          <TextareaField placeholder="Ingrese su mensaje largo" />
-        </FieldGroup>
-        <Button isFull>Guardar cambios</Button>
-      </div>
-      <hr className="my-5" />
-      <div className="space-y-5">
-        <Badge isLost>Perdido</Badge>
-        <Badge isFound>Encontrado</Badge>
-        <br />
-        <br />
-        <Avatar src={AvatarImage} size={"32px"} isBorder />
-        <Avatar src={AvatarImage} size={"24px"} isCircle />
-        <Avatar src={AvatarImage} size={"42px"} isCircle isBorder />
-      </div>
-      <hr className="my-5" />
-      <div className="space-y-5">
-        <SectionHeader
-          subtitle="Cerca de tu ubicacion"
-          title="Mascotas perdidas recientemente"
-        >
-          <p>
-            Estas son las mascotas perdidas recient emente por tu zona
-            geografica, si viste alguna no dudes en reportar
-          </p>
-        </SectionHeader>
-      </div>
-      <hr className="my-5" />
-      <div className="space-y-5">
-        <Alarm title="Bravo!" description="Descripcion" />
-        <Alarm
-          type="alert"
-          title="Oops! Error encontrado"
-          description="Descripcion"
-        />
-        <Alarm
-          type="warning"
-          title="Cuidado! Algo anda mal"
-          description="Descripcion"
-        />
-        <Alarm
-          type="info"
-          title="Sabias?"
-          description="Estas son las mascotas perdidas recient emente por tu zona geografica, si viste alguna no dudes en reportar"
-        />
-      </div>
-      <hr className="my-5" />
-      <div className="space-y-5">
-        <SectionTeam>
+        <p className="">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+          repellendus recusandae assumenda? Illum mollitia dolore, voluptates
+          nam iusto, exercitationem fuga libero expedita ad velit dicta
+          assumenda distinctio vitae error facilis.
+        </p>
+        <hr className="my-5" />
+        <div className="space-y-5">
+          <Button>Reportar pérdida</Button>
+          <Button isUnfilled isFull>
+            Reportar pérdida
+          </Button>
+          <Button isFull>Reportar pérdida</Button>
+        </div>
+        <hr className="my-5" />
+        <div className="space-y-5">
+          <FieldGroup label="Correo">
+            <InputField typeField="email" placeholder="Ingrese el correo" />
+          </FieldGroup>
+          <FieldGroup label="Contrasena">
+            <InputField
+              typeField="password"
+              placeholder="Ingrese la contrasena"
+            />
+          </FieldGroup>
+          <FieldGroup label="Nombre">
+            <InputField typeField="text" placeholder="Nombre" />
+          </FieldGroup>
+          <FieldGroup label="Mensaje">
+            <TextareaField placeholder="Ingrese su mensaje largo" />
+          </FieldGroup>
+          <Button isFull>Guardar cambios</Button>
+        </div>
+        <hr className="my-5" />
+        <div className="space-y-5">
+          <Badge isLost>Perdido</Badge>
+          <Badge isFound>Encontrado</Badge>
+          <br />
+          <br />
+          <Avatar src={AvatarImage} size={"32px"} isBorder />
+          <Avatar src={AvatarImage} size={"24px"} isCircle />
+          <Avatar src={AvatarImage} size={"42px"} isCircle isBorder />
+        </div>
+        <hr className="my-5" />
+        <div className="space-y-5">
           <SectionHeader
-            subtitle="Quienes somos"
-            textAlign="text-left"
-            title="Uniendo comunidades para salvar peluditos"
+            subtitle="Cerca de tu ubicacion"
+            title="Mascotas perdidas recientemente"
           >
-            <p className="mb-4">
-              En Pet Rescue nos apasiona ayudar a las mascotas a regresar a
-              casa. Entendemos el dolor y la ansiedad que puede causar perder a
-              un ser querido, por eso creamos una plataforma que conecta a la
-              comunidad para facilitar el reencuentro.
+            <p>
+              Estas son las mascotas perdidas recient emente por tu zona
+              geografica, si viste alguna no dudes en reportar
             </p>
-            <p className="mb-6">
-              Nuestra misión es ser una herramienta confiable y fácil de usar
-              para que las mascotas regresen a casa lo más rápido posible.
-              Queremos que nuestra app sea un lugar donde la comunidad se una
-              para ayudar a aquellos que más lo necesitan.
-            </p>
-            <Button>Reportar mascota</Button>
           </SectionHeader>
-        </SectionTeam>
+        </div>
+        <hr className="my-5" />
+        <div className="space-y-5">
+          <Alarm title="Bravo!" description="Descripcion" />
+          <Alarm
+            type="alert"
+            title="Oops! Error encontrado"
+            description="Descripcion"
+          />
+          <Alarm
+            type="warning"
+            title="Cuidado! Algo anda mal"
+            description="Descripcion"
+          />
+          <Alarm
+            type="info"
+            title="Sabias?"
+            description="Estas son las mascotas perdidas recient emente por tu zona geografica, si viste alguna no dudes en reportar"
+          />
+        </div>
+        <hr className="my-5" />
+        <div className="space-y-5">
+          <SectionTeam>
+            <SectionHeader
+              subtitle="Quienes somos"
+              textAlign="text-left"
+              title="Uniendo comunidades para salvar peluditos"
+            >
+              <p className="mb-4">
+                En Pet Rescue nos apasiona ayudar a las mascotas a regresar a
+                casa. Entendemos el dolor y la ansiedad que puede causar perder
+                a un ser querido, por eso creamos una plataforma que conecta a
+                la comunidad para facilitar el reencuentro.
+              </p>
+              <p className="mb-6">
+                Nuestra misión es ser una herramienta confiable y fácil de usar
+                para que las mascotas regresen a casa lo más rápido posible.
+                Queremos que nuestra app sea un lugar donde la comunidad se una
+                para ayudar a aquellos que más lo necesitan.
+              </p>
+              <Button>Reportar mascota</Button>
+            </SectionHeader>
+          </SectionTeam>
+        </div>
       </div>
+      <Footer />
     </>
   );
 }
