@@ -1,29 +1,3 @@
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from "@headlessui/react";
-
-import close from "../../assets/icons/close.svg";
-import menu from "../../assets/icons/menu.svg";
-import petRescueLogo from "../../assets/petRescueLogo.png";
-import Avatar from "../../ui/Avatar";
-// import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-
-const navigation = [
-  { name: "Inicio", href: "#", current: true },
-  { name: "Reportar mascota", href: "#", current: false },
-  { name: "Nosotros", href: "#", current: false },
-];
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function Footer() {
   return (
     <div className=" px-5 py-(--padding-section)">
