@@ -12,8 +12,10 @@
   --color-black: #1f2a37;
 
   --color-alert-primary: #f23030;
-  --color-alert-secondary: #f56060;
-  --color-alert-background: #fef3f3;
+  --color-alert-secondary: #fef3f3;
+
+  --color-success-primary: #22ad5c;
+  --color-success-secondary: #daf8e6;
 
   --border-radius: 0.4rem;
   --padding-size: 2rem;
@@ -24,6 +26,15 @@
     font-family: var(--font-sans);
     color: var(--color-black);
     background-color: var(--color-background);
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+    text-wrap: pretty;
   }
 
   h1 {
@@ -60,5 +71,6 @@
     font-size: var(--text-base);
     line-height: var(--text-base--line-height);
     font-weight: 400;
+    text-wrap: balance;
   }
 }
