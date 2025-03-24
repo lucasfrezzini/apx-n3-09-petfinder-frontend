@@ -17,8 +17,15 @@
   --color-success-primary: #22ad5c;
   --color-success-secondary: #daf8e6;
 
+  --color-warning-primary: #f59e0b;
+  --color-warning-secondary: #fffbeb;
+
+  --color-info-primary: #0b76b7;
+  --color-info-secondary: #e9f9ff;
+
   --border-radius: 0.4rem;
   --padding-size: 2rem;
+  --padding-section: 4rem;
 }
 
 @layer base {
