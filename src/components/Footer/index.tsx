@@ -3,22 +3,16 @@ export default function Footer() {
     <div className=" px-5 py-(--padding-section)">
       <nav aria-label="Footer" className="flex flex-wrap gap-6 justify-center">
         <a href="#" className="text-dark transition-colors hover:text-primary">
-          About
+          Inicio
         </a>
         <a href="#" className="text-dark transition-colors hover:text-primary">
-          Blog
+          Nosotros
         </a>
         <a href="#" className="text-dark transition-colors hover:text-primary">
-          Jobs
+          Mascotas Perdidas
         </a>
         <a href="#" className="text-dark transition-colors hover:text-primary">
-          Press
-        </a>
-        <a href="#" className="text-dark transition-colors hover:text-primary">
-          Accessibility
-        </a>
-        <a href="#" className="text-dark transition-colors hover:text-primary">
-          Partners
+          Preguntas Frecuentes
         </a>
       </nav>
       <div className="flex flex-wrap mt-8 gap-6 justify-center">
@@ -95,7 +89,8 @@ export default function Footer() {
         </a>
       </div>
       <p className="mt-8 text-center">
-        © 2024 Your Company, Inc. All rights reserved.
+        © 2024 Pet Rescue, Inc. Todos los derechos reservados. Por
+        @lucasfrezzini aka Tano.
       </p>
     </div>
   );
