@@ -22,7 +22,7 @@ export default function PetCard({ data }: PetCardProps) {
     <div className={styles}>
       <div className="rounded-xl">
         <img
-          className="rounded-xl inline-block"
+          className="rounded-xl aspect-3/2 object-cover"
           src={data.urlImage}
           alt={data.name}
         />
