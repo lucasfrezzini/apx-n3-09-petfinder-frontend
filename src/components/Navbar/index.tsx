@@ -12,7 +12,6 @@ import close from "../../assets/icons/close.svg";
 import menu from "../../assets/icons/menu.svg";
 import petRescueLogo from "../../assets/petRescueLogo.png";
 import Avatar from "../../ui/Avatar";
-// import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
   { name: "Inicio", href: "#", current: true },
@@ -31,7 +30,7 @@ export default function Navbar() {
         <div className="container px-5 mx-auto relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button*/}
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
+            <DisclosureButton className="group relative inline-flex items-center justify-center cursor-pointer rounded-md p-2 focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <img
@@ -122,7 +121,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <DisclosurePanel className="sm:hidden">
+      <DisclosurePanel className="fixed top-[64px] bg-white w-full left-0 shadow-lg sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
           {navigation.map((item) => (
             <DisclosureButton
