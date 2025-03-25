@@ -10,12 +10,24 @@ import Alarm from "./ui/Alarm";
 import SectionTeam from "./components/SectionTeam";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import PetCard from "./components/PetCard";
+
+const PetDataSample = {
+  name: "Firulais",
+  size: "Mediano",
+  age: "8",
+  type: "Gato",
+  latitude: 1.233232,
+  longitude: 3.424244,
+  urlImage:
+    "https://www.cronista.com/files/image/651/651177/64bac94461355_700_462!.jpg?s=2e4395f6da95bbed148764512dc5558e&d=1689962824",
+};
 
 function App() {
   return (
     <>
       <Navbar />
-      <div className="container mt-[60px] p-5 mx-auto">
+      <div className="container pt-[60px] p-5 mx-auto bg-linear-to-b from-secondary to-transparent">
         <h1 className=" text-primary my-5">Design System for PetFinder</h1>
         <hr className="my-5" />
         <h2>Lorem ipsum dolor sit amet</h2>
@@ -66,13 +78,14 @@ function App() {
           <br />
           <Avatar src={AvatarImage} size={"32px"} isBorder />
           <Avatar src={AvatarImage} size={"24px"} isCircle />
-          <Avatar src={AvatarImage} size={"42px"} isCircle isBorder />
+          <Avatar src={AvatarImage} size={"119px"} isCircle isBorder />
         </div>
         <hr className="my-5" />
         <div className="space-y-5">
           <SectionHeader
             subtitle="Cerca de tu ubicacion"
             title="Mascotas perdidas recientemente"
+            textAlign="text-right"
           >
             <p>
               Estas son las mascotas perdidas recient emente por tu zona
@@ -123,6 +136,15 @@ function App() {
             </SectionHeader>
           </SectionTeam>
         </div>
+        <div className="space-y-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <PetCard data={PetDataSample}></PetCard>
+          <PetCard data={PetDataSample}></PetCard>
+          <PetCard data={PetDataSample}></PetCard>
+          <PetCard data={PetDataSample}></PetCard>
+          <PetCard data={PetDataSample}></PetCard>
+          <PetCard data={PetDataSample}></PetCard>
+        </div>
+        <hr className="my-5" />
       </div>
       <Footer />
     </>

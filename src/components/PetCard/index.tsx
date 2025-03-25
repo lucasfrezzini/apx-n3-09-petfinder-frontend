@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import CardInfo from "../../ui/CardInfo";
+import InfoCard from "../../ui/InfoCard";
 
 type PetData = {
   name: string;
@@ -28,7 +28,7 @@ export default function PetCard({ data }: PetCardProps) {
         />
       </div>
 
-      <CardInfo type={data.type} name={data.name} size={data.size} />
+      <InfoCard type={data.type} name={data.name} size={data.size} />
     </div>
   );
 }
