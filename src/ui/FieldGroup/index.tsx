@@ -8,7 +8,7 @@ interface FieldGroupProps {
 export default function FieldGroup(props: FieldGroupProps) {
   const { children, label } = props;
   return (
-    <div>
+    <div className="mb-5">
       <label className="mb-2 inline-block">{label}</label>
       {children}
     </div>
