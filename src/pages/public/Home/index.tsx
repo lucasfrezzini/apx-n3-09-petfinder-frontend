@@ -1,12 +1,12 @@
-import SectionHeader from "../../components/SectionHeader";
-import SectionHero from "../../components/SectionHero";
-import SectionLostPets from "../../components/SectionLostPets";
-import SectionTeam from "../../components/SectionTeam";
-import Button from "../../ui/Button";
+import SectionHeader from "../../../components/SectionHeader";
+import SectionHero from "../../../components/SectionHero";
+import SectionLostPets from "../../../components/SectionLostPets";
+import SectionTeam from "../../../components/SectionTeam";
+import Button from "../../../ui/Button";
 
 export default function Home() {
   return (
-    <main>
+    <main className="w-full">
       <div className="bg-linear-to-b from-secondary to-transparent">
         <div className="container md:pt-[60px] p-5 mx-auto">
           <SectionHero

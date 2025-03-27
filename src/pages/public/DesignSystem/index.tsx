@@ -59,16 +59,25 @@ function DesignSystem() {
         <hr className="my-5" />
         <div className="space-y-5">
           <FieldGroup label="Correo">
-            <InputField typeField="email" placeholder="Ingrese el correo" />
+            <InputField
+              name="email"
+              typeField="email"
+              placeholder="Ingrese el correo"
+            />
           </FieldGroup>
           <FieldGroup label="Contrasena">
             <InputField
+              name="password"
               typeField="password"
               placeholder="Ingrese la contrasena"
             />
           </FieldGroup>
           <FieldGroup label="Nombre">
-            <InputField typeField="text" placeholder="Nombre" />
+            <InputField
+              name="password"
+              typeField="text"
+              placeholder="Ingrese su nombre"
+            />
           </FieldGroup>
           <FieldGroup label="Mensaje">
             <TextareaField placeholder="Ingrese su mensaje largo" />
