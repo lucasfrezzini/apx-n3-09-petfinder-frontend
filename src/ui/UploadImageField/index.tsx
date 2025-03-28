@@ -3,6 +3,7 @@ import picIcon from "../../assets/icons/pic.svg";
 interface UploadImageFieldProps {}
 
 export default function UploadImageField(props: UploadImageFieldProps) {
+  //! TODO: make get dataURI by images
   return (
     <div className="mt-2 flex justify-center rounded-lg border border-dashed border-(--color-gray-light) px-6 py-10">
       <div className="text-center">
