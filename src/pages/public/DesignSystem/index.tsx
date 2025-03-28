@@ -87,7 +87,7 @@ function DesignSystem() {
         <hr className="my-5" />
         <div className="space-y-5">
           <Badge isLost>Perdido</Badge>
-          <Badge isFound>Encontrado</Badge>
+          <Badge isLost>Encontrado</Badge>
           <br />
           <br />
           <Avatar src={AvatarImage} size={"32px"} isBorder />

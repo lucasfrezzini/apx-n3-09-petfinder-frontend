@@ -6,6 +6,9 @@ import Register from "./pages/private/Register";
 import EditProfile from "./pages/private/EditProfile";
 import NotifyPet from "./pages/private/NotifyPet";
 import CreatePetReport from "./pages/private/CreatePetReport";
+import PetsState from "./pages/private/PetsState";
+import LostPets from "./pages/public/LostPets";
+import LostPetsMap from "./pages/public/LostPetsMap";
 
 function App() {
   return (
@@ -16,7 +19,10 @@ function App() {
       {/* <Register></Register> */}
       {/* <NotifyPet></NotifyPet> */}
       {/* <EditProfile></EditProfile> */}
-      <CreatePetReport></CreatePetReport>
+      {/* <CreatePetReport></CreatePetReport> */}
+      <PetsState></PetsState>
+      {/* <LostPets></LostPets> */}
+      {/* <LostPetsMap></LostPetsMap> */}
       <Footer />
     </div>
   );
