@@ -7,7 +7,7 @@ interface AvatarProps {
   src: string;
 }
 
-const defaultClasses = "aspect-square rounded-(--border-radius)";
+const defaultClasses = "aspect-square object-cover rounded-(--border-radius)";
 const circle = "rounded-full";
 const border = "border border-primary border-2";
 
