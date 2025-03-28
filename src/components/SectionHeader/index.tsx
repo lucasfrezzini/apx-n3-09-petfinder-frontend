@@ -6,7 +6,7 @@ interface SectionHeaderProps {
   subtitle: string;
   textAlign?: string;
 }
-const defaultClasses = "mx-auto md:w-md lg:w-xl";
+const defaultClasses = "mx-auto md:w-md lg:w-lg";
 
 export default function SectionHeader({
   children,
