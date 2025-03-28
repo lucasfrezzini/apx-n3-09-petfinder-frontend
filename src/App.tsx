@@ -5,6 +5,7 @@ import Login from "./pages/private/Login";
 import Register from "./pages/private/Register";
 import EditProfile from "./pages/private/EditProfile";
 import NotifyPet from "./pages/private/NotifyPet";
+import CreatePetReport from "./pages/private/CreatePetReport";
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
       {/* <Home></Home> */}
       {/* <Login></Login> */}
       {/* <Register></Register> */}
-      <NotifyPet></NotifyPet>
+      {/* <NotifyPet></NotifyPet> */}
       {/* <EditProfile></EditProfile> */}
+      <CreatePetReport></CreatePetReport>
       <Footer />
     </div>
   );
