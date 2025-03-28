@@ -6,10 +6,13 @@ interface ButtonProps {
   isFull?: boolean;
   isUnfilled?: boolean;
   isStrech?: boolean;
+  isSmall?: boolean;
 }
 
 const defaultClasses =
-  "px-7 py-3 rounded-(--border-radius) cursor-pointer transition-all";
+  "rounded-(--border-radius) cursor-pointer transition-all";
+const normal = "py-3 px-5";
+const small = "px-3 py-2";
 const full = "w-full";
 const filled = "bg-primary text-white hover:bg-primary-dark";
 const unfilled =
@@ -21,12 +24,14 @@ export default function Button({
   isUnfilled = false,
   isFull = false,
   isStrech = false,
+  isSmall = false,
 }: ButtonProps) {
   const styles = clsx(
     defaultClasses,
     isUnfilled ? unfilled : filled,
     isFull && full,
-    isStrech && strech
+    isStrech && strech,
+    isSmall ? small : normal
   );
   return <button className={styles}>{children}</button>;
 }
