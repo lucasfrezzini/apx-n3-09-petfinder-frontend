@@ -3,6 +3,8 @@ import PetCard from "../PetCard";
 import SectionHeader from "../SectionHeader";
 import Button from "../../ui/Button";
 
+import emptyOK from "../../assets/icons/emptyOK.svg";
+
 const mascotas = [
   {
     name: "Luna",
@@ -91,6 +93,25 @@ const defaultClasses = "py-(--padding-section)";
 
 export default function SectionLostPets({}: SectionLostPetsProps) {
   const styles = clsx(defaultClasses);
+
+  if (!mascotas.length) {
+    return (
+      <section className={styles}>
+        <SectionHeader
+          title="Ayuda a encontrar a los que se perdieron"
+          subtitle="Mascotas perdidas cerca tuyo"
+        >
+          <p className="mb-8">
+            No hay mascotas perdidas cerca de tu zona ¡que buena noticia!
+          </p>
+        </SectionHeader>
+        <div className="flex justify-center my-16">
+          <img src={emptyOK} alt="Empty Icon" />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={styles}>
       <SectionHeader
@@ -104,9 +125,13 @@ export default function SectionLostPets({}: SectionLostPetsProps) {
         </p>
       </SectionHeader>
       <div className="flex justify-center gap-6 my-12">
-        <Button>Todos</Button>
-        <Button isUnfilled>Perros</Button>
-        <Button isUnfilled>Gatos</Button>
+        <Button isSmall>Todos</Button>
+        <Button isUnfilled isSmall>
+          Perros
+        </Button>
+        <Button isUnfilled isSmall>
+          Gatos
+        </Button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
         {mascotas.map((pet) => {
