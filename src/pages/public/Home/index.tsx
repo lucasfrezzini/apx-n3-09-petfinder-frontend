@@ -3,6 +3,7 @@ import SectionHero from "../../../components/SectionHero";
 import SectionLostPets from "../../../components/SectionLostPets";
 import SectionTeam from "../../../components/SectionTeam";
 import Button from "../../../ui/Button";
+import LostPetsMap from "../LostPetsMap";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
           <SectionLostPets></SectionLostPets>
         </div>
       </div>
+      <LostPetsMap />
       <div className="container p-5 mx-auto">
         <SectionTeam>
           <SectionHeader
