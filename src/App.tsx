@@ -12,17 +12,17 @@ import LostPetsMap from "./pages/public/LostPetsMap";
 
 function App() {
   return (
-    <div className="bg-gray-dark grid items-center justify-items-center min-h-svh">
+    <div className="bg-white grid items-center justify-items-center min-h-svh">
       <Navbar />
-      {/* <Home></Home> */}
+      <Home></Home>
       {/* <Login></Login> */}
       {/* <Register></Register> */}
       {/* <NotifyPet></NotifyPet> */}
       {/* <EditProfile></EditProfile> */}
       {/* <CreatePetReport></CreatePetReport> */}
-      <PetsState></PetsState>
+      {/* <PetsState></PetsState> */}
       {/* <LostPets></LostPets> */}
-      {/* <LostPetsMap></LostPetsMap> */}
+      <LostPetsMap></LostPetsMap>
       <Footer />
     </div>
   );
