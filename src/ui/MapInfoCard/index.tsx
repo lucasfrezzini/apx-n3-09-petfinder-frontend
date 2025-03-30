@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Button from "../Button";
 
 interface InfoCardProps {
@@ -29,7 +30,9 @@ export default function InfoCard({
           `}
       </p>
       <h6 className="my-4">{name}</h6>
-      <Button>{btnChildren}</Button>
+      <Link to="/notify-pet">
+        <Button>{btnChildren}</Button>
+      </Link>
     </div>
   );
 }

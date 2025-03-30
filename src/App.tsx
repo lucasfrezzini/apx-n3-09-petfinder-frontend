@@ -1,5 +1,7 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router";
+import PublicLayout from "./pages/public/PublicLayout";
+import PrivateLayout from "./pages/private/PrivateLayout";
+
 import Home from "./pages/public/Home";
 import Login from "./pages/private/Login";
 import Register from "./pages/private/Register";
@@ -12,19 +14,23 @@ import LostPetsMap from "./pages/public/LostPetsMap";
 
 function App() {
   return (
-    <div className="bg-white grid items-center justify-items-center min-h-svh">
-      <Navbar />
-      <Home></Home>
-      {/* <Login></Login> */}
-      {/* <Register></Register> */}
-      {/* <NotifyPet></NotifyPet> */}
-      {/* <EditProfile></EditProfile> */}
-      {/* <CreatePetReport></CreatePetReport> */}
-      {/* <PetsState></PetsState> */}
-      {/* <LostPets></LostPets> */}
-      <LostPetsMap></LostPetsMap>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<PublicLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/lost-pets" element={<LostPets />} />
+          <Route path="/lost-pets-map" element={<LostPetsMap />} />
+        </Route>
+        <Route element={<PrivateLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/notify-pet" element={<NotifyPet />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/pets-state" element={<PetsState />} />
+          <Route path="/create-pet-report" element={<CreatePetReport />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

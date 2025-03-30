@@ -65,9 +65,6 @@ export default function LostPetsMap() {
         <FullscreenControl position="top-left" />
         <NavigationControl position="top-left" />
         <GeolocateControl position="top-left" />
-        {/* <div style={{ position: "", top: 10, left: 10 }}></div>
-        <div style={{ position: "absolute", top: 10, left: 10 }}></div>
-        <div style={{ position: "absolute", top: 10, left: 10 }}></div> */}
 
         {pins}
 
