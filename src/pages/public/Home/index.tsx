@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import SectionHeader from "../../../components/SectionHeader";
 import SectionHero from "../../../components/SectionHero";
 import SectionLostPets from "../../../components/SectionLostPets";
@@ -37,7 +38,9 @@ export default function Home() {
               Queremos que nuestra DesignSystem sea un lugar donde la comunidad
               se una para ayudar a aquellos que más lo necesitan.
             </p>
-            <Button>Reportar mascota</Button>
+            <Link to="/create-pet-report">
+              <Button>Reportá tu mascota</Button>
+            </Link>
           </SectionHeader>
         </SectionTeam>
       </div>

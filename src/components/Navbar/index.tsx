@@ -125,23 +125,24 @@ export default function Navbar() {
         </div>
       </div>
 
-      <DisclosurePanel className="fixed top-[64px] bg-white w-full left-0 shadow-lg sm:hidden">
+      <DisclosurePanel className="fixed z-40 top-[64px] bg-white w-full left-0 shadow-lg sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
           {navigation.map((item) => (
-            <DisclosureButton
-              key={item.name}
-              as="a"
-              href={item.href}
-              aria-current={item.current ? "page" : undefined}
-              className={classNames(
-                item.current
-                  ? "text-primary"
-                  : "text-dark transition-colors hover:bg-primary hover:text-white",
-                "block rounded-md px-3 py-2 text-base font-medium"
-              )}
-            >
-              {item.name}
-            </DisclosureButton>
+            <Link to={item.href}>
+              <DisclosureButton
+                key={item.name}
+                as="button"
+                aria-current={item.current ? "page" : undefined}
+                className={classNames(
+                  item.current
+                    ? "text-primary"
+                    : "text-dark transition-colors hover:bg-primary hover:text-white",
+                  "block rounded-md px-3 py-2 text-base font-medium"
+                )}
+              >
+                {item.name}
+              </DisclosureButton>
+            </Link>
           ))}
         </div>
       </DisclosurePanel>

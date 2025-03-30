@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Button from "../../ui/Button";
 import heroMap from "../../assets/heroMap.png";
+import { Link } from "react-router";
 
 interface SectionHeroProps {
   title: string;
@@ -12,7 +13,7 @@ const defaultClasses = "py-(--padding-section)";
 export default function SectionHero({
   title,
   description,
-  btnChildren = "Reportar mascota",
+  btnChildren = "Reportá tu mascota",
 }: SectionHeroProps) {
   const styles = clsx(defaultClasses);
   return (
@@ -21,7 +22,9 @@ export default function SectionHero({
         <header className="py-(--padding-section)">
           <h2 className="my-4">{title}</h2>
           <p className="mb-4">{description}</p>
-          <Button>{btnChildren}</Button>
+          <Link to="/create-pet-report">
+            <Button>{btnChildren}</Button>
+          </Link>
         </header>
         <img
           className="justify-self-center"
