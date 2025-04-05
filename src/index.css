@@ -81,6 +81,22 @@
     font-weight: 400;
     text-wrap: balance;
   }
+
+  input:-internal-autofill-selected {
+    background-color: white !important;
+  }
+  input:-internal-autofill-previewed {
+    background-color: white !important;
+  }
+}
+
+@layer components {
+  input:-internal-autofill-selected {
+    background-color: white !important;
+  }
+  input:-internal-autofill-previewed {
+    background-color: white !important;
+  }
 }
 
 .mapboxgl-map {

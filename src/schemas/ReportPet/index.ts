@@ -11,16 +11,9 @@ export const ReportPetSchema = z.object({
     .min(1, { message: "Ingrese una edad aproximada" })
     .regex(/^[0-9]+$/, { message: "Solo numeros para la edad" }),
   location: z.string().min(1, { message: "Ingrese una ubicacion en el mapa" }),
-  lng: z.string(),
-  lat: z.string(),
+  lat: z.number(),
+  lng: z.number(),
   type_pet: z.enum(type_of_pets),
   size: z.enum(sizes_of_pets),
-  file_0: z.string({ message: "Se necesita al menos 1 foto" }),
-  file_1: z.string().optional(),
-  file_2: z.string().optional(),
-  file_3: z.string().optional(),
-  // dataImageURI: z
-  //   .array(z.string().base64())
-  //   .min(1, { message: "Se necesita al menos 1 foto" })
-  //   .max(4, { message: "No se pueden cargar mas de 4 fotos" }),
+  images: z.string().min(3, { message: "Se necesita al menos 1 foto" }),
 });
