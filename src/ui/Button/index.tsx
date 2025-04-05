@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 interface ButtonProps {
   children: ReactNode;
+  type: "submit" | "reset" | "button" | undefined;
   isFull?: boolean;
   isUnfilled?: boolean;
   isStrech?: boolean;
@@ -21,6 +22,7 @@ const strech = "col-start-1 col-end-3";
 
 export default function Button({
   children,
+  type = undefined,
   isUnfilled = false,
   isFull = false,
   isStrech = false,
@@ -33,5 +35,9 @@ export default function Button({
     isStrech && strech,
     isSmall ? small : normal
   );
-  return <button className={styles}>{children}</button>;
+  return (
+    <button type={type} className={styles}>
+      {children}
+    </button>
+  );
 }
