@@ -5,7 +5,7 @@ type PetData = {
   name: string;
   size: string;
   age: string;
-  type: string;
+  type_pet: string;
   latitude: number;
   longitude: number;
   urlImage: string;
@@ -28,7 +28,7 @@ export default function PetCard({ data }: PetCardProps) {
         />
       </div>
 
-      <InfoCard type={data.type} name={data.name} size={data.size} />
+      <InfoCard type={data.type_pet} name={data.name} size={data.size} />
     </div>
   );
 }

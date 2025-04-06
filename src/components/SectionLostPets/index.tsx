@@ -4,13 +4,14 @@ import SectionHeader from "../SectionHeader";
 import Button from "../../ui/Button";
 
 import emptyOK from "../../assets/icons/emptyOK.svg";
+import { useState } from "react";
 
 const mascotas = [
   {
     name: "Luna",
     size: "Pequeño",
     age: "5",
-    type: "Gato",
+    type_pet: "Gato",
     latitude: -34.603722,
     longitude: -58.381592,
     urlImage:
@@ -20,7 +21,7 @@ const mascotas = [
     name: "Rocky",
     size: "Grande",
     age: "3",
-    type: "Perro",
+    type_pet: "Perro",
     latitude: -34.603722,
     longitude: -58.381592,
     urlImage:
@@ -30,7 +31,7 @@ const mascotas = [
     name: "Milo",
     size: "Mediano",
     age: "7",
-    type: "Gato",
+    type_pet: "Gato",
     latitude: -34.603722,
     longitude: -58.381592,
     urlImage:
@@ -40,7 +41,7 @@ const mascotas = [
     name: "Bella",
     size: "Pequeño",
     age: "2",
-    type: "Perro",
+    type_pet: "Perro",
     latitude: -34.603722,
     longitude: -58.381592,
     urlImage:
@@ -50,7 +51,7 @@ const mascotas = [
     name: "Oliver",
     size: "Mediano",
     age: "4",
-    type: "Gato",
+    type_pet: "Gato",
     latitude: -34.603722,
     longitude: -58.381592,
     urlImage:
@@ -60,7 +61,7 @@ const mascotas = [
     name: "Charlie",
     size: "Grande",
     age: "6",
-    type: "Perro",
+    type_pet: "Perro",
     latitude: -34.603722,
     longitude: -58.381592,
     urlImage:
@@ -70,7 +71,7 @@ const mascotas = [
     name: "Lucy",
     size: "Pequeño",
     age: "1",
-    type: "Gato",
+    type_pet: "Gato",
     latitude: -34.603722,
     longitude: -58.381592,
     urlImage:
@@ -80,7 +81,7 @@ const mascotas = [
     name: "Max",
     size: "Mediano",
     age: "9",
-    type: "Perro",
+    type_pet: "Perro",
     latitude: -34.603722,
     longitude: -58.381592,
     urlImage:
@@ -92,9 +93,20 @@ interface SectionLostPetsProps {}
 const defaultClasses = "py-(--padding-section)";
 
 export default function SectionLostPets({}: SectionLostPetsProps) {
+  const [filterType, setFilterType] = useState("Todos");
+
+  const filteredPets = mascotas.filter((pet) => {
+    if (filterType === "Todos") return true;
+    return pet.type_pet === filterType;
+  });
+
+  const handleFilter = (type: string) => {
+    setFilterType(type);
+  };
+
   const styles = clsx(defaultClasses);
 
-  if (!mascotas.length) {
+  if (!filteredPets.length) {
     return (
       <section className={styles}>
         <SectionHeader
@@ -125,18 +137,33 @@ export default function SectionLostPets({}: SectionLostPetsProps) {
         </p>
       </SectionHeader>
       <div className="flex justify-center gap-6 my-12">
-        <Button type="button" isSmall>
+        <Button
+          onClick={() => handleFilter("Todos")}
+          type="button"
+          isUnfilled={filterType !== "Todos" && true}
+          isSmall
+        >
           Todos
         </Button>
-        <Button type="button" isUnfilled isSmall>
+        <Button
+          onClick={() => handleFilter("Perro")}
+          type="button"
+          isUnfilled={filterType !== "Perro" && true}
+          isSmall
+        >
           Perros
         </Button>
-        <Button type="button" isUnfilled isSmall>
+        <Button
+          onClick={() => handleFilter("Gato")}
+          type="button"
+          isUnfilled={filterType !== "Gato" && true}
+          isSmall
+        >
           Gatos
         </Button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
-        {mascotas.map((pet, idx) => {
+        {filteredPets.map((pet, idx) => {
           return <PetCard key={`${pet.name}-${idx}`} data={pet}></PetCard>;
         })}
       </div>
