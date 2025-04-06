@@ -125,17 +125,19 @@ export default function SectionLostPets({}: SectionLostPetsProps) {
         </p>
       </SectionHeader>
       <div className="flex justify-center gap-6 my-12">
-        <Button isSmall>Todos</Button>
-        <Button isUnfilled isSmall>
+        <Button type="button" isSmall>
+          Todos
+        </Button>
+        <Button type="button" isUnfilled isSmall>
           Perros
         </Button>
-        <Button isUnfilled isSmall>
+        <Button type="button" isUnfilled isSmall>
           Gatos
         </Button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
-        {mascotas.map((pet) => {
-          return <PetCard data={pet}></PetCard>;
+        {mascotas.map((pet, idx) => {
+          return <PetCard key={`${pet.name}-${idx}`} data={pet}></PetCard>;
         })}
       </div>
     </section>

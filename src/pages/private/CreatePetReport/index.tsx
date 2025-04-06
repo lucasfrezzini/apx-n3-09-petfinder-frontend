@@ -26,17 +26,6 @@ import MapPin from "../../../ui/MapPin";
 const TOKEN =
   "pk.eyJ1IjoidGFub2RldmVsb3BlciIsImEiOiJjbTYzdXoxY3YxZzFzMmxvdW9oN3EwZ3p6In0.5rPl_irsXaZzKAt1lMg-iw";
 
-type IFormInput = {
-  name: string;
-  age: number;
-  type_pet: string;
-  size: string;
-  location: string;
-  lat: string;
-  lng: string;
-  files64: string[];
-};
-
 // Función de conversión (versión simplificada)
 const convertToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve) => {
@@ -71,9 +60,9 @@ export default function CreatePetReport() {
   };
 
   // Dropzone config
-  const [files, setFiles] = useState<
-    Array<{ name: string; preview: string; dataURI?: string }>
-  >([]);
+  const [files, setFiles] = useState<Array<{ name: string; preview: string }>>(
+    []
+  );
   const { getRootProps, getInputProps, isDragReject } = useDropzone({
     accept: {
       "image/jpeg": [],
