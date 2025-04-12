@@ -39,7 +39,7 @@ export default function Home() {
               se una para ayudar a aquellos que más lo necesitan.
             </p>
             <Link to="/create-pet-report">
-              <Button>Reportá tu mascota</Button>
+              <Button type="button">Reportá tu mascota</Button>
             </Link>
           </SectionHeader>
         </SectionTeam>

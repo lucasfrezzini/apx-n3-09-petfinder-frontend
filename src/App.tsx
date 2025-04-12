@@ -11,19 +11,21 @@ import CreatePetReport from "./pages/private/CreatePetReport";
 import PetsState from "./pages/private/PetsState";
 import LostPets from "./pages/public/LostPets";
 import LostPetsMap from "./pages/public/LostPetsMap";
+import { Toaster } from "sonner";
 
 function App() {
   return (
     <BrowserRouter>
+      <Toaster expand={true} richColors position="bottom-right" />
       <Routes>
         <Route element={<PublicLayout />}>
           <Route index element={<Home />} />
           <Route path="/lost-pets" element={<LostPets />} />
           <Route path="/lost-pets-map" element={<LostPetsMap />} />
-        </Route>
-        <Route element={<PrivateLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+        </Route>
+        <Route element={<PrivateLayout />}>
           <Route path="/notify-pet" element={<NotifyPet />} />
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/pets-state" element={<PetsState />} />

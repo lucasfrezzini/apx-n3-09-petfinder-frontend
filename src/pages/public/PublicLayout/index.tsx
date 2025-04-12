@@ -1,14 +1,18 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Navbar";
 
 export default function PublicLayout() {
+  let location = useLocation();
+  console.log("location", location.pathname);
+
   return (
     <>
       <Navbar />
       <div className="bg-white grid items-center justify-items-center min-h-svh">
         {<Outlet />}
-        <Footer />
+        {location.pathname !== "/register" &&
+          location.pathname !== "/login" && <Footer />}
       </div>
     </>
   );

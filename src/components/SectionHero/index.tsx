@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Button from "../../ui/Button";
-import heroMap from "../../assets/heroMap.png";
+import heroMap from "../../assets/pets3.png";
 import { Link } from "react-router";
 
 interface SectionHeroProps {
@@ -23,7 +23,7 @@ export default function SectionHero({
           <h2 className="my-4">{title}</h2>
           <p className="mb-4">{description}</p>
           <Link to="/create-pet-report">
-            <Button>{btnChildren}</Button>
+            <Button type="button">{btnChildren}</Button>
           </Link>
         </header>
         <img

@@ -81,22 +81,13 @@
     font-weight: 400;
     text-wrap: balance;
   }
-
-  input:-internal-autofill-selected {
-    background-color: white !important;
-  }
-  input:-internal-autofill-previewed {
-    background-color: white !important;
-  }
 }
 
-@layer components {
-  input:-internal-autofill-selected {
-    background-color: white !important;
-  }
-  input:-internal-autofill-previewed {
-    background-color: white !important;
-  }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-internal-autofill-selected {
+  @apply !bg-white;
 }
 
 .mapboxgl-map {
