@@ -15,5 +15,8 @@ export const ReportPetSchema = z.object({
   lng: z.number(),
   type_pet: z.enum(type_of_pets),
   size: z.enum(sizes_of_pets),
-  images: z.string().min(3, { message: "Se necesita al menos 1 foto" }),
+  arrDataURI: z
+    .array(z.string())
+    .min(1, "Debe contener al menos 1 foto")
+    .max(4, "Máximo 4 fotos permitidas"),
 });

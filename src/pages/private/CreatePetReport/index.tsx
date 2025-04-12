@@ -13,6 +13,7 @@ import Map, {
   GeolocateControl,
 } from "react-map-gl";
 
+import { convertToBase64, getAddress } from "../../../utils";
 import SectionPrivateLayout from "../../../components/SectionPrivateLayout";
 import Button from "../../../ui/Button";
 import FieldGroup from "../../../ui/FieldGroup";
@@ -22,24 +23,23 @@ import UploadImageField from "../../../ui/UploadImageField";
 import Avatar from "../../../ui/Avatar";
 import InputFormError from "../../../ui/InputFormError";
 import MapPin from "../../../ui/MapPin";
+import { useNavigate } from "react-router";
+import { useCreateNewReport } from "../../../hooks/pet.hook";
+import LoaderSpinner from "../../../ui/LoaderSpinner";
+import { toast } from "sonner";
+import { useAtom } from "jotai";
+import { userWithTokenAtom } from "../../../context";
 
 const TOKEN =
   "pk.eyJ1IjoidGFub2RldmVsb3BlciIsImEiOiJjbTYzdXoxY3YxZzFzMmxvdW9oN3EwZ3p6In0.5rPl_irsXaZzKAt1lMg-iw";
 
-// Función de conversión (versión simplificada)
-const convertToBase64 = (file: File): Promise<string> => {
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result === "string") {
-        resolve(reader.result.split(",")[1]); // Elimina el prefijo "data:*/*;base64,"
-      }
-    };
-    reader.readAsDataURL(file);
-  });
-};
-
 export default function CreatePetReport() {
+  let navigate = useNavigate();
+  const [user, _setUser] = useAtom(userWithTokenAtom);
+
+  const [showLoader, setShowLoader] = useState(false);
+  const { createReport } = useCreateNewReport();
+
   const [base64Images, setBase64Images] = useState<string[]>([]);
   const [markerPoints, setMarkerPoints] = useState<
     { lat: string; lng: string }[]
@@ -54,9 +54,26 @@ export default function CreatePetReport() {
     resolver: zodResolver(ReportPetSchema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(JSON.parse(data.images));
+  const onSubmit = async (data: any) => {
     console.log(data);
+
+    try {
+      setShowLoader(true);
+
+      await createReport(data, user!.id);
+      setShowLoader(false);
+      toast.success("Felicitaciones", {
+        description: "Se ha creado correctamente el reporte",
+      });
+      setTimeout(() => {
+        navigate("/pets-state");
+      }, 1500);
+    } catch (error: any) {
+      setShowLoader(false);
+      toast.error("Tuvimos un error con el reporte", {
+        description: "Lo siento, intentelo nuevamente",
+      });
+    }
   };
 
   // Dropzone config
@@ -84,7 +101,7 @@ export default function CreatePetReport() {
         acceptedFiles.map((file) => convertToBase64(file))
       );
       setBase64Images(base64Array);
-      setValue("images", JSON.stringify(base64Array));
+      setValue("arrDataURI", base64Array);
     },
   });
 
@@ -111,33 +128,9 @@ export default function CreatePetReport() {
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
   }, [files]);
 
-  async function getAddress(lng: number, lat: number): Promise<string> {
-    const response = await fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${TOKEN}`
-    );
-    const data = await response.json();
-    // Verifica si hay resultados
-    if (data.features.length > 0) {
-      const context = data.features[0].context;
-
-      // Busca la ciudad (place) o el barrio (neighborhood) en el contexto
-      const city = context.find((item: any) =>
-        item.id.startsWith("place")
-      )?.text;
-      const region = context.find((item: any) =>
-        item.id.startsWith("region")
-      )?.text;
-
-      // Devuelve la ciudad o el barrio, según lo que esté disponible
-      return `${city ? city : ""}${region ? "," + region : ""}`;
-    } else {
-      return "No encontrada";
-    }
-  }
-
   async function handleClickMap(e: any) {
     const { lng, lat } = e.lngLat;
-    const location = await getAddress(lng, lat);
+    const location = await getAddress(lng, lat, TOKEN);
     setMarkerPoints((_prevPoints) => [{ lng, lat }]);
     setValue("lat", lat);
     setValue("lng", lng);
@@ -207,16 +200,18 @@ export default function CreatePetReport() {
                       No pueden ser más de 4 imágenes
                     </p>
                   )}
-                  {errors.images?.message && (
-                    <InputFormError>{errors.images?.message}</InputFormError>
+                  {errors.arrDataURI?.message && (
+                    <InputFormError>
+                      {errors.arrDataURI?.message}
+                    </InputFormError>
                   )}
                 </div>
                 <aside className="flex gap-4 mt-4">
                   {thumbs.length ? thumbs : emptyThumbs}
                   <input
                     type="hidden"
-                    {...register("images")}
-                    value={JSON.stringify(base64Images)}
+                    {...register("arrDataURI")}
+                    value={base64Images}
                   />
                 </aside>
               </section>
@@ -270,9 +265,13 @@ export default function CreatePetReport() {
               )}
             </FieldGroup>
           </div>
-          <Button type="submit" isStrech isFull>
-            Guardar cambios
-          </Button>
+          {showLoader ? (
+            <LoaderSpinner isStrech />
+          ) : (
+            <Button type="submit" isStrech isFull>
+              Guardar cambios
+            </Button>
+          )}
         </form>
       </SectionPrivateLayout>
     </main>
