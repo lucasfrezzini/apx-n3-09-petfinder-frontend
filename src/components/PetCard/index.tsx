@@ -1,18 +1,10 @@
 import clsx from "clsx";
 import InfoCard from "../../ui/InfoCard";
+import { Pet } from "../../utils/types";
 
-type PetData = {
-  name: string;
-  size: string;
-  age: string;
-  type_pet: string;
-  latitude: number;
-  longitude: number;
-  urlImage: string;
-};
 interface PetCardProps {
   children?: React.ReactNode;
-  data: PetData;
+  data: Pet;
 }
 const defaultClasses = "flex flex-col";
 
@@ -23,7 +15,7 @@ export default function PetCard({ data }: PetCardProps) {
       <div className="rounded-xl">
         <img
           className="rounded-xl aspect-3/2 object-cover"
-          src={data.urlImage}
+          src={data.images[0].url}
           alt={data.name}
         />
       </div>

@@ -10,25 +10,20 @@ import Map, {
 
 import MapInfoCard from "../../../ui/MapInfoCard";
 import MapPin from "../../../ui/MapPin";
-import PETS from "../../../petsMap.json";
+import { useGetPets } from "../../../hooks/pet.hook";
+import { Pet } from "../../../utils/types";
 
 const TOKEN =
   "pk.eyJ1IjoidGFub2RldmVsb3BlciIsImEiOiJjbTYzdXoxY3YxZzFzMmxvdW9oN3EwZ3p6In0.5rPl_irsXaZzKAt1lMg-iw";
 
 export default function LostPetsMap() {
-  const [popupInfo, setPopupInfo] = useState<{
-    lat: string;
-    lng: string;
-    name: string;
-    size: string;
-    type_pet: string;
-    status: string;
-    imageURL: string;
-  } | null>(null);
+  const { pets } = useGetPets();
+
+  const [popupInfo, setPopupInfo] = useState<Pet | null>(null);
 
   const pins = useMemo(
     () =>
-      PETS.map((pet, index) => (
+      pets.map((pet, index) => (
         <Marker
           key={`marker-${index}`}
           longitude={parseFloat(pet.lng)}
@@ -41,7 +36,7 @@ export default function LostPetsMap() {
             setPopupInfo(pet);
           }}
         >
-          <MapPin src={pet.imageURL} />
+          <MapPin variant src={pet.images[0].url} />
         </Marker>
       )),
     []

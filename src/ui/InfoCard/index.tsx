@@ -3,10 +3,21 @@ import Button from "../Button";
 
 interface InfoCardProps {
   name: string;
-  size: string;
-  type: string;
+  size: keyof typeof typesSize;
+  type: keyof typeof typesOfPets;
   btnChildren?: string;
 }
+
+const typesSize = {
+  small: "Pequeño",
+  medium: "Mediano",
+  large: "Grande",
+};
+
+const typesOfPets = {
+  dog: "Perro",
+  cat: "Gato",
+};
 
 export default function InfoCard({
   name,
@@ -18,13 +29,13 @@ export default function InfoCard({
     <div className="bg-white text-center p-6 rounded-xl shadow-2xl -mt-8 mx-8">
       <p className="text-primary tracking-wide">
         {`
-          ${type} | 
-          ${size}
+          ${typesSize[size]} | 
+          ${typesOfPets[type]}
           `}
       </p>
       <h6 className="my-4">{name}</h6>
       <Link to="/notify-pet">
-        <Button>{btnChildren}</Button>
+        <Button type="button">{btnChildren}</Button>
       </Link>
     </div>
   );
