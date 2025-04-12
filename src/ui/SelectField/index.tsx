@@ -14,7 +14,6 @@ export default function SelectField(props: SelectFieldProps) {
   return (
     <select
       {...register}
-      name={name}
       autoComplete={autocomplete}
       className={defaultClasses}
     >
