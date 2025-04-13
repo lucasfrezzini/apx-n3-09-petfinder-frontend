@@ -5,6 +5,7 @@ interface InfoCardProps {
   name: string;
   size: string;
   type: string;
+  id: number;
   btnChildren?: string;
 }
 function getSize(size: string) {
@@ -16,6 +17,7 @@ export default function InfoCard({
   name,
   size,
   type,
+  id,
   btnChildren = "Dar Aviso",
 }: InfoCardProps) {
   const typeToSpanish = type === "dog" ? "Perro" : "Gato";
@@ -30,7 +32,7 @@ export default function InfoCard({
           `}
       </p>
       <h6 className="my-4">{name}</h6>
-      <Link to="/notify-pet">
+      <Link to={`/notify-pet/${id}`}>
         <Button type="button">{btnChildren}</Button>
       </Link>
     </div>

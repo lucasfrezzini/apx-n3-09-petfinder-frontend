@@ -3,6 +3,7 @@ import Button from "../Button";
 
 interface InfoCardProps {
   name: string;
+  id: number;
   size: keyof typeof typesSize;
   type: keyof typeof typesOfPets;
   btnChildren?: string;
@@ -23,6 +24,7 @@ export default function InfoCard({
   name,
   size,
   type,
+  id,
   btnChildren = "Dar Aviso",
 }: InfoCardProps) {
   return (
@@ -34,7 +36,7 @@ export default function InfoCard({
           `}
       </p>
       <h6 className="my-4">{name}</h6>
-      <Link to="/notify-pet">
+      <Link to={`/notify-pet/${id}`}>
         <Button type="button">{btnChildren}</Button>
       </Link>
     </div>

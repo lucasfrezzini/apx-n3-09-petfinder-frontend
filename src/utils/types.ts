@@ -1,9 +1,10 @@
 // TypeScript type for the Pet table
 export type Pet = {
+  id: number;
   name: string; // NOT NULL
   type_pet: "dog" | "cat"; // NOT NULL
   age: string; // NOT NULL
-  size: "small" | "medium" | "large"; // NOT NULL
+  size: "small" | "medium" | "big"; // NOT NULL
   lat: string; // NOT NULL
   lng: string; // NOT NULL
   status: string; // NOT NULL

@@ -20,7 +20,12 @@ export default function PetCard({ data }: PetCardProps) {
         />
       </div>
 
-      <InfoCard type={data.type_pet} name={data.name} size={data.size} />
+      <InfoCard
+        type={data.type_pet}
+        id={data.id}
+        name={data.name}
+        size={data.size}
+      />
     </div>
   );
 }

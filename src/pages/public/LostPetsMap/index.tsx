@@ -72,6 +72,7 @@ export default function LostPetsMap() {
             onClose={() => setPopupInfo(null)}
           >
             <MapInfoCard
+              id={popupInfo.id}
               name={popupInfo.name}
               size={popupInfo.size}
               type={popupInfo.type_pet}
