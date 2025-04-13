@@ -7,6 +7,7 @@ export type Pet = {
   lat: string; // NOT NULL
   lng: string; // NOT NULL
   status: string; // NOT NULL
+  description: string;
   images: {
     url: string;
     asset_id: string;

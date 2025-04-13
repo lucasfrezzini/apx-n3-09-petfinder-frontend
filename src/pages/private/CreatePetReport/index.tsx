@@ -29,6 +29,7 @@ import LoaderSpinner from "../../../ui/LoaderSpinner";
 import { toast } from "sonner";
 import { useAtom } from "jotai";
 import { userWithTokenAtom } from "../../../context";
+import TextareaField from "../../../ui/TextareaField";
 
 const TOKEN =
   "pk.eyJ1IjoidGFub2RldmVsb3BlciIsImEiOiJjbTYzdXoxY3YxZzFzMmxvdW9oN3EwZ3p6In0.5rPl_irsXaZzKAt1lMg-iw";
@@ -185,7 +186,7 @@ export default function CreatePetReport() {
                 <InputFormError>{errors.size?.message}</InputFormError>
               )}
             </FieldGroup>
-            <FieldGroup label="Subir imágenes de mascota">
+            <FieldGroup label="Subir imágenes de la mascota">
               <p className="-mt-2 text-sm text-warning-primary">
                 Hasta 4 imágenes
               </p>
@@ -197,7 +198,8 @@ export default function CreatePetReport() {
                   <UploadImageField></UploadImageField>
                   {isDragReject && (
                     <p className="text-sm mt-2 text-alert-primary">
-                      No pueden ser más de 4 imágenes
+                      No pueden ser más de 4 imágenes ni tampoco archivos
+                      mayores a 5MB
                     </p>
                   )}
                   {errors.arrDataURI?.message && (
@@ -218,8 +220,17 @@ export default function CreatePetReport() {
             </FieldGroup>
           </div>
           <div className="col-start-1 col-end-3 lg:col-start-2 lg:col-end-3">
+            <FieldGroup label="Descripcion">
+              <TextareaField
+                register={register("description")}
+                placeholder="Ingrese toda la informacion que pueda sobre la mascota, como razgos, qué llevaba puesto, etc para ayudar a identificarla"
+              />
+              {errors.description?.message && (
+                <InputFormError>{errors.description?.message}</InputFormError>
+              )}
+            </FieldGroup>
             <FieldGroup label="Ubicacion">
-              <div className="w-[100%] h-[300px] sm:h-[400px] lg:h-[570px] rounded-lg overflow-hidden">
+              <div className="w-[100%] h-[300px] sm:h-[400px] lg:h-[350px] rounded-lg overflow-hidden">
                 <Map
                   initialViewState={{
                     latitude: -34.6277,

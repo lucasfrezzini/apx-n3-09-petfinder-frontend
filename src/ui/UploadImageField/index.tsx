@@ -13,7 +13,9 @@ export default function UploadImageField() {
             <span>Subir Imagen</span>
           </label>
         </div>
-        <p className="text-xs/5 text-gray-400">PNG, JPG hasta 5MB</p>
+        <p className="text-xs/5 text-gray-400">
+          PNG, JPG, JPEG o WEBP hasta 5MB
+        </p>
       </div>
     </div>
   );

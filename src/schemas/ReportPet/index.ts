@@ -11,6 +11,7 @@ export const ReportPetSchema = z.object({
     .min(1, { message: "Ingrese una edad aproximada" })
     .regex(/^[0-9]+$/, { message: "Solo numeros para la edad" }),
   location: z.string().min(1, { message: "Ingrese una ubicacion en el mapa" }),
+  description: z.string().optional(),
   lat: z.number(),
   lng: z.number(),
   type_pet: z.enum(type_of_pets),
