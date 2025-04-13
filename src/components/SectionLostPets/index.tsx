@@ -3,12 +3,8 @@ import PetCard from "../PetCard";
 import SectionHeader from "../SectionHeader";
 import Button from "../../ui/Button";
 
-import emptyOK from "../../assets/icons/emptyOK.svg";
-import errorIcon from "../../assets/icons/close.svg";
 import { useState } from "react";
 import { useGetPets } from "../../hooks/pet.hook";
-import { useAtom } from "jotai";
-import { petsAtom } from "../../context";
 import PetCardSkeleton from "../../ui/PetCardSkeleton";
 import { toast } from "sonner";
 
@@ -42,7 +38,7 @@ export default function SectionLostPets() {
           <p className="mb-8">{error?.message}</p>
         </SectionHeader>
         <div className="flex justify-center my-16">
-          <img src={errorIcon} alt="Error Icon" />
+          <p className="text-8xl">😭</p>
         </div>
       </section>
     );
@@ -84,7 +80,7 @@ export default function SectionLostPets() {
           </p>
         </SectionHeader>
         <div className="flex justify-center my-16">
-          <img src={emptyOK} alt="Empty Icon" />
+          <p className="text-8xl">🥳</p>
         </div>
       </section>
     );
