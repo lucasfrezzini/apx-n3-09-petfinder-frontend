@@ -16,7 +16,7 @@ export default function InfoCard({
   name,
   size,
   type,
-  btnChildren = "Reportar mascota",
+  btnChildren = "Dar Aviso",
 }: InfoCardProps) {
   const typeToSpanish = type === "dog" ? "Perro" : "Gato";
   const sizeToSpanish = getSize(size);
@@ -31,7 +31,7 @@ export default function InfoCard({
       </p>
       <h6 className="my-4">{name}</h6>
       <Link to="/notify-pet">
-        <Button>{btnChildren}</Button>
+        <Button type="button">{btnChildren}</Button>
       </Link>
     </div>
   );

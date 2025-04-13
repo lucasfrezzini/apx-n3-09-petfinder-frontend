@@ -128,18 +128,26 @@ export default function Navbar() {
                 >
                   <MenuItem>
                     <Link
-                      to="/edit-profile"
-                      className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
-                    >
-                      Configuracion
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link
                       to="/pets-state"
                       className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
                     >
                       Mis mascotas
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link
+                      to="/pets-reports"
+                      className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                    >
+                      Mis avistajes
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link
+                      to="/edit-profile"
+                      className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                    >
+                      Configuracion
                     </Link>
                   </MenuItem>
                   <MenuItem>

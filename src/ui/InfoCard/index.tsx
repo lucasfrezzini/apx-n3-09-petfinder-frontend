@@ -11,7 +11,7 @@ interface InfoCardProps {
 const typesSize = {
   small: "Pequeño",
   medium: "Mediano",
-  large: "Grande",
+  big: "Grande",
 };
 
 const typesOfPets = {
@@ -23,14 +23,14 @@ export default function InfoCard({
   name,
   size,
   type,
-  btnChildren = "Reportar mascota",
+  btnChildren = "Dar Aviso",
 }: InfoCardProps) {
   return (
     <div className="bg-white text-center p-6 rounded-xl shadow-2xl -mt-8 mx-8">
       <p className="text-primary tracking-wide">
         {`
-          ${typesSize[size]} | 
-          ${typesOfPets[type]}
+          ${typesOfPets[type]} •
+          ${typesSize[size]}  
           `}
       </p>
       <h6 className="my-4">{name}</h6>
