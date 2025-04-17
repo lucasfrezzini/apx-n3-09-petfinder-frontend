@@ -1,5 +1,5 @@
 // Función de conversión a base 64
-export const convertToBase64 = (file: File): Promise<string> => {
+export const convertToBase64 = (file: File | Blob): Promise<string> => {
   return new Promise((resolve) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -46,3 +46,14 @@ export async function getAddress(
     return "No encontrada";
   }
 }
+
+export const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const options = {
+    year: "numeric" as "numeric",
+    month: "long" as "long",
+    day: "numeric" as "numeric",
+    timeZone: "UTC",
+  };
+  return date.toLocaleDateString("es-AR", options);
+};
