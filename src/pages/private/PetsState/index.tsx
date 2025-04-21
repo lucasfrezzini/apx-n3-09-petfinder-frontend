@@ -4,7 +4,9 @@ import SectionPrivateLayout from "../../../components/SectionPrivateLayout";
 
 import { useGetUserPets } from "../../../hooks/user.hook";
 import { Pet } from "../../../utils/types";
-import PetResumeSkeleton from "../../../ui/PetResumeSkeleton";
+import PetResumeSkeleton from "../../../ui/PetReportSkeleton";
+import Button from "../../../ui/Button";
+import { Link } from "react-router";
 
 export default function PetsState() {
   const { userPets, isLoading, error } = useGetUserPets();
@@ -12,14 +14,15 @@ export default function PetsState() {
   if (error) {
     return (
       <main className="container mx-auto sm:w-lg">
-        <SectionHeader title="Mis Mascotas" subtitle="Estado de tus mascotas">
+        <SectionHeader
+          title="¡Ups! Algo salió mal"
+          subtitle="No pudimos cargar tus mascotas reportadas"
+        >
           <p className="mb-4">
-            Tuvimos problemas tecnicos con la carga de la información
+            Reintentá en unos minutos o verificá tu conexión a internet. Si el
+            problema persiste, contactá a soporte.
           </p>
         </SectionHeader>
-        <div className="flex justify-center my-16">
-          <p className="text-8xl">😭</p>
-        </div>
       </main>
     );
   }
@@ -27,9 +30,13 @@ export default function PetsState() {
   if (isLoading) {
     return (
       <main className="container mx-auto sm:w-lg">
-        <SectionHeader title="Mis Mascotas" subtitle="Estado de tus mascotas">
+        <SectionHeader
+          title="Buscando tus mascotas..."
+          subtitle="Estamos cargando la información"
+        >
           <p className="mb-4">
-            No tienes mascotas reportadas aún ¡que buena noticia!
+            Por favor esperá unos segundos mientras reunimos los últimos datos
+            de tus reportes.
           </p>
         </SectionHeader>
         <SectionPrivateLayout>
@@ -46,20 +53,34 @@ export default function PetsState() {
   if (!userPets.length) {
     return (
       <main className="container mx-auto sm:w-lg">
-        <SectionHeader title="Mis Mascotas" subtitle="Estado de tus mascotas">
-          <p className="mb-4">Estas son tus mascotas reportadas en la app</p>
+        <SectionHeader
+          title="Ninguna mascota reportada"
+          subtitle="¿Perdiste a tu compañero peludo?"
+        >
+          <p className="mb-4">
+            Usá el botón para registrar una mascota perdida. Cuantos más
+            detalles agregues, más fácil será encontrarla.
+          </p>
         </SectionHeader>
         <div className="flex justify-center my-16">
-          <p className="text-8xl">🥳</p>
+          <Link to={"/create-pet-report"}>
+            <Button type="button">Crear nuevo reporte</Button>
+          </Link>
         </div>
       </main>
     );
   }
 
   return (
-    <main className="container mx-auto sm:w-lg">
-      <SectionHeader title="Mis Mascotas" subtitle="Estado de tus mascotas">
-        <p className="mb-4">Estas son tus mascotas reportadas en la app</p>
+    <main className="container mx-auto sm:w-lg pt-24">
+      <SectionHeader
+        title="Mis Mascotas Reportadas"
+        subtitle="Tus casos activos de búsqueda"
+      >
+        <p className="mb-4">
+          Aquí encontrarás todas las mascotas que has reportado. Mantené
+          actualizada la información para facilitar su localización.
+        </p>
       </SectionHeader>
       <SectionPrivateLayout>
         <div className="flex flex-col gap-6">
