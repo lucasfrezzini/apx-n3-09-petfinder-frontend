@@ -17,7 +17,7 @@ export const ReportPetSchema = z.object({
   type_pet: z.enum(type_of_pets),
   size: z.enum(sizes_of_pets),
   arrDataURI: z
-    .array(z.string())
+    .array(z.string(), { message: "Agregue al menos una foto" })
     .min(1, "Debe contener al menos 1 foto")
     .max(4, "Máximo 4 fotos permitidas"),
 });
