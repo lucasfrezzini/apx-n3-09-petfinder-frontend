@@ -27,14 +27,16 @@ import { useNavigate } from "react-router";
 import { useCreateNewReport } from "../../../hooks/pet.hook";
 import LoaderSpinner from "../../../ui/LoaderSpinner";
 import { toast } from "sonner";
-import { useAtom } from "jotai";
-import { userWithTokenAtom } from "../../../context";
+import { useAtom, useAtomValue } from "jotai";
+import { userCoordsAtom, userWithTokenAtom } from "../../../context";
 import TextareaField from "../../../ui/TextareaField";
 
 const TOKEN =
   "pk.eyJ1IjoidGFub2RldmVsb3BlciIsImEiOiJjbTYzdXoxY3YxZzFzMmxvdW9oN3EwZ3p6In0.5rPl_irsXaZzKAt1lMg-iw";
 
 export default function CreatePetReport() {
+  const coords = useAtomValue(userCoordsAtom);
+
   let navigate = useNavigate();
   const [user, _setUser] = useAtom(userWithTokenAtom);
 
@@ -233,9 +235,9 @@ export default function CreatePetReport() {
               <div className="w-[100%] h-[300px] sm:h-[400px] lg:h-[350px] rounded-lg overflow-hidden">
                 <Map
                   initialViewState={{
-                    latitude: -34.6277,
-                    longitude: -58.4477,
-                    zoom: 14,
+                    latitude: coords?.latitude || -34.6118,
+                    longitude: coords?.longitude || -58.4244,
+                    zoom: 10,
                     bearing: 0,
                     pitch: 0,
                   }}
