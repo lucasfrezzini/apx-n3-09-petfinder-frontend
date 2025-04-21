@@ -3,13 +3,12 @@ import SectionPrivateLayout from "../../../components/SectionPrivateLayout";
 import Button from "../../../ui/Button";
 import FieldGroup from "../../../ui/FieldGroup";
 import InputField from "../../../ui/InputField";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UpdateProfileSchema } from "../../../schemas/UpdateProfile";
 import { useUpdateUserData } from "../../../hooks/user.hook";
 import userDefault from "../../../assets/userPhotoDefault.png";
-import { useNavigate } from "react-router";
 import { allPropsAreEmptyStrings, convertToBase64 } from "../../../utils";
 import { UserPic } from "../../../utils/types";
 import InputFormError from "../../../ui/InputFormError";
@@ -21,7 +20,7 @@ export default function UpdateProfile() {
   const [showLoader, setShowLoader] = useState(false);
   const [user, _setUser] = useAtom(userWithTokenAtom);
   const [previewUserPic, setPreviewUserPic] = useState<UserPic>({
-    url: user?.profilePic || "",
+    url: user?.profilePic.url || "",
     url64: "",
   });
   const { updateUserData } = useUpdateUserData();
@@ -29,11 +28,23 @@ export default function UpdateProfile() {
   const {
     register,
     setValue,
+    reset,
     formState: { errors },
     handleSubmit,
   } = useForm({
     resolver: zodResolver(UpdateProfileSchema),
   });
+
+  useEffect(() => {
+    if (user) {
+      reset({
+        name: user.name,
+        email: user.email,
+        address: user.address,
+        phone: user.phone,
+      });
+    }
+  }, [user, reset]);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -45,15 +56,18 @@ export default function UpdateProfile() {
   const onSubmit = async (data: any) => {
     try {
       setShowLoader(true);
+
       if (allPropsAreEmptyStrings(data)) {
         toast.warning("Lo lamento", {
           description: "No hay elementos nuevos para cambiar",
         });
         setShowLoader(false);
       } else {
+        const profilePicClean = data.profilePic || "";
         await updateUserData({
           ...user,
           ...data,
+          profilePic: profilePicClean,
         });
         setShowLoader(false);
         toast.success("Todo genial", {
