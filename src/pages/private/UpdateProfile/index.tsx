@@ -48,7 +48,7 @@ export default function UpdateProfile() {
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleButtonClick = (e: any) => {
+  const handleButtonClick = () => {
     // Simulate the click on the hidden file input
     fileInputRef.current!.click();
   };
