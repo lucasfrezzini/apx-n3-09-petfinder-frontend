@@ -4,17 +4,15 @@ interface PetResumeSkeletonProps {
 
 export default function PetResumeSkeleton({ bg }: PetResumeSkeletonProps) {
   return (
-    <div className="flex items-center gap-8 animate-pulse">
-      <div className={`rounded-xl ${bg}`}>
-        <div className={`size-16 rounded-xl ${bg}`}></div>
+    <div className="animate-pulse">
+      <div className="w-full mb-8 flex justify-between items-center gap-4">
+        <div className={`h-4 w-[120px] rounded ${bg}`}></div>
+        <div className={`h-4 w-[80px] rounded ${bg}`}></div>
       </div>
-      <div className="w-full flex items-center gap-4">
-        <div className={`w-full mx-auto rounded`}>
-          <div className={`h-4 mb-4 w-[120px] rounded ${bg}`}></div>
-          <div className={`h-4 w-[80px] rounded ${bg}`}></div>
-        </div>
-        <div className={`h-8 w-24 rounded ${bg}`}></div>
-      </div>
+      <div className={`h-4 mb-4 w-full rounded ${bg}`}></div>
+      <div className={`h-4 mb-4 w-[80%] rounded ${bg}`}></div>
+      <div className={`h-4 mb-8 w-[90%] rounded ${bg}`}></div>
+      <div className={`h-4 w-[100px] rounded ${bg}`}></div>
     </div>
   );
 }
