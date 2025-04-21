@@ -27,7 +27,7 @@ export default function InfoCard({
     <div className="w-full -mt-2.5 bg-white text-center p-6 rounded-xl shadow-2xl">
       <p className="text-primary tracking-wid mt-2">
         {`
-          ${typeToSpanish} | 
+          ${typeToSpanish} • 
           ${sizeToSpanish}
           `}
       </p>
