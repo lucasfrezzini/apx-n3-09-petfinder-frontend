@@ -4,15 +4,22 @@ import SectionHeader from "../SectionHeader";
 import Button from "../../ui/Button";
 
 import { useState } from "react";
-import { useGetPets } from "../../hooks/pet.hook";
 import PetCardSkeleton from "../../ui/PetCardSkeleton";
-import { toast } from "sonner";
+import { Pet } from "../../utils/types";
 
 const defaultClasses = "py-(--padding-section)";
 
-export default function SectionLostPets() {
-  const { pets, isLoading, error } = useGetPets();
+interface SectionLostPetsProps {
+  pets: Pet[];
+  isLoading?: boolean;
+  error: Error | null;
+}
 
+export default function SectionLostPets({
+  pets,
+  isLoading,
+  error,
+}: SectionLostPetsProps) {
   const [filterType, setFilterType] = useState("all");
   const filteredPets = pets.filter((pet) => {
     if (filterType === "all") return true;
@@ -26,9 +33,6 @@ export default function SectionLostPets() {
   const styles = clsx(defaultClasses);
 
   if (error) {
-    toast.error("Error en la peticion", {
-      description: "Lo siento, intentelo nuevamente",
-    });
     return (
       <section className={styles}>
         <SectionHeader
@@ -98,32 +102,35 @@ export default function SectionLostPets() {
           avistamientos.
         </p>
       </SectionHeader>
-      <div className="flex justify-center gap-6 my-12">
-        <Button
-          onClick={() => handleFilter("all")}
-          type="button"
-          isUnfilled={filterType !== "Todos" && true}
-          isSmall
-        >
-          Todos
-        </Button>
-        <Button
-          onClick={() => handleFilter("dog")}
-          type="button"
-          isUnfilled={filterType !== "dog" && true}
-          isSmall
-        >
-          Perros
-        </Button>
-        <Button
-          onClick={() => handleFilter("cat")}
-          type="button"
-          isUnfilled={filterType !== "cat" && true}
-          isSmall
-        >
-          Gatos
-        </Button>
-      </div>
+      {pets.some((pet) => pet.type_pet == "cat") &&
+        pets.some((pet) => pet.type_pet == "dog") && (
+          <div className="flex justify-center gap-6 my-12">
+            <Button
+              onClick={() => handleFilter("all")}
+              type="button"
+              isUnfilled={filterType !== "all" && true}
+              isSmall
+            >
+              Todos
+            </Button>
+            <Button
+              onClick={() => handleFilter("dog")}
+              type="button"
+              isUnfilled={filterType !== "dog" && true}
+              isSmall
+            >
+              Perros
+            </Button>
+            <Button
+              onClick={() => handleFilter("cat")}
+              type="button"
+              isUnfilled={filterType !== "cat" && true}
+              isSmall
+            >
+              Gatos
+            </Button>
+          </div>
+        )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
         {filteredPets.map((pet, idx) => {
           return <PetCard key={`${pet.name}-${idx}`} data={pet}></PetCard>;
