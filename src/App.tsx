@@ -12,8 +12,21 @@ import PetsState from "./pages/private/PetsState";
 import LostPets from "./pages/public/LostPets";
 import LostPetsMap from "./pages/public/LostPetsMap";
 import { Toaster } from "sonner";
+import ReportList from "./pages/private/ReportList";
+import ReportDetails from "./pages/private/ReportDetails";
+import EditPetReport from "./pages/private/EditPetReport";
+import Page404 from "./pages/public/404";
+import { useEffect } from "react";
+import { useSetAtom } from "jotai";
+import { userCoordsAtom } from "./context";
 
 function App() {
+  const setCoords = useSetAtom(userCoordsAtom);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      setCoords(pos.coords);
+    });
+  }, []);
   return (
     <BrowserRouter>
       <Toaster expand={true} richColors position="bottom-right" />
@@ -24,12 +37,16 @@ function App() {
           <Route path="/lost-pets-map" element={<LostPetsMap />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<Page404 />} />
         </Route>
         <Route element={<PrivateLayout />}>
-          <Route path="/notify-pet" element={<NotifyPet />} />
+          <Route path="/notify-pet/:id" element={<NotifyPet />} />
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/pets-state" element={<PetsState />} />
+          <Route path="/pets-reports" element={<ReportList />} />
+          <Route path="/report-detail/:idPet" element={<ReportDetails />} />
           <Route path="/create-pet-report" element={<CreatePetReport />} />
+          <Route path="/edit-pet/:id" element={<EditPetReport />} />
         </Route>
       </Routes>
     </BrowserRouter>
