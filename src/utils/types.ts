@@ -1,43 +1,59 @@
 // TypeScript type for the Pet table
 export type Pet = {
+  UserId?: number;
   id: number;
-  name: string; // NOT NULL
-  type_pet: "dog" | "cat"; // NOT NULL
-  age: string; // NOT NULL
-  size: "small" | "medium" | "big"; // NOT NULL
-  lat: string; // NOT NULL
-  lng: string; // NOT NULL
-  status: string; // NOT NULL
+  name: string;
+  type_pet: "dog" | "cat";
+  age: string;
+  size: "small" | "medium" | "big";
+  lat: string;
+  lng: string;
+  status: string;
   description: string;
   images: {
     url: string;
-    asset_id: string;
+    public_id: string;
   }[];
-  location: string; // NOT NULL
+  location: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 // TypeScript type for the Report table
 export type Report = {
-  name: string; // NOT NULL
-  phone: string; // NOT NULL
-  info: string; // NOT NULL
+  name: string;
+  phone: string;
+  info: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 // TypeScript type for the User table
 export type User = {
   id: number;
-  name?: string; // Opcional porque no tiene NOT NULL
-  email: string; // NOT NULL
-  phone?: string; // Opcional porque no tiene NOT NULL
-  address?: string; // Opcional porque no tiene NOT NULL
-  lat?: string; // Opcional porque no tiene NOT NULL
-  lng?: string; // Opcional porque no tiene NOT NULL
-  profilePic: string;
+  name?: string;
+  email: string;
+  phone?: string;
+  address?: string;
+  lat?: string;
+  lng?: string;
+  profilePic: {
+    url: string;
+    public_id: string;
+  };
+};
+
+export type PetAndReports = Pet & { Reports: Report[] };
+
+export type ReportInfo = {
+  id: number;
+  name: string;
+  reports: Report[];
 };
 
 export type UserPic = {
-  url: string; // Propiedad para la URL de previsualización
-  url64: string; // Propiedad para la URL en formato Base64
+  url: string;
+  url64: string;
 };
 
 export type FetchParams = {
