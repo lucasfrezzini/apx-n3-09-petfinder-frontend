@@ -1,7 +1,12 @@
-import { useSetAtom } from "jotai";
-import { asyncFetchDataAtom } from "../context";
-import { User } from "../utils/types";
+import { useAtom, useSetAtom } from "jotai";
+import {
+  asyncFetchDataAtom,
+  userPetsAtom,
+  userWithTokenAtom,
+} from "../context";
+import { User, UserWithToken } from "../utils/types";
 import { hasToken } from "../utils/auth";
+import { useEffect, useState } from "react";
 
 export function useUpdateUserData() {
   const fetchData = useSetAtom(asyncFetchDataAtom);
@@ -47,4 +52,40 @@ export function useUpdateUserPassword() {
   }
 
   return { updateUserPassword };
+}
+
+export function useGetUserPets() {
+  const [user, _setUser] = useAtom(userWithTokenAtom);
+  const fetchData = useSetAtom(asyncFetchDataAtom);
+  const [userPets, setUserPets] = useAtom(userPetsAtom);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    async function fetchApi() {
+      try {
+        setIsLoading(true);
+        const token = hasToken();
+        const { id } = user as UserWithToken;
+
+        const fetchPromise = fetchData({
+          endpoint: `user/pets`,
+          method: "POST",
+          token: token as string,
+          body: { id },
+          errorMessage: "Error obteniendo mascotas del usuario",
+        });
+
+        const data = await fetchPromise;
+        setUserPets(data);
+      } catch (error: any) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchApi();
+  }, [fetchData, setUserPets]);
+
+  return { userPets, isLoading, error };
 }
