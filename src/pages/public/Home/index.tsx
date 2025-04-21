@@ -4,9 +4,15 @@ import SectionHero from "../../../components/SectionHero";
 import SectionLostPets from "../../../components/SectionLostPets";
 import SectionTeam from "../../../components/SectionTeam";
 import Button from "../../../ui/Button";
-import LostPetsMap from "../LostPetsMap";
+import MapLostPets from "../../../components/MapLostPets";
+import { useGetPets } from "../../../hooks/pet.hook";
+import { userCoordsAtom } from "../../../context";
+import { useAtomValue } from "jotai";
 
 export default function Home() {
+  const coords = useAtomValue(userCoordsAtom);
+  const { pets, isLoading, error } = useGetPets();
+
   return (
     <main className="w-full">
       <div className="bg-linear-to-b from-secondary to-transparent">
@@ -15,10 +21,25 @@ export default function Home() {
             title="Encuentra a tus amigos peludos más rápido"
             description="¿Tu mascota se perdió? ¡No estás solo! Reporta su pérdida y encuentra ayuda en nuestra comunidad. Descubre mascotas cerca y únete para ayudar a otros."
           ></SectionHero>
-          <SectionLostPets></SectionLostPets>
+          <SectionLostPets
+            pets={pets}
+            isLoading={isLoading}
+            error={error}
+          ></SectionLostPets>
         </div>
       </div>
-      <LostPetsMap />
+      <MapLostPets
+        pets={pets}
+        zoom={coords ? 12 : 8}
+        coords={
+          coords
+            ? {
+                lat: Number(coords?.latitude),
+                lng: Number(coords?.longitude),
+              }
+            : { lat: -34.6277, lng: -58.4477 }
+        }
+      />
       <div className="container p-5 mx-auto">
         <SectionTeam>
           <SectionHeader
