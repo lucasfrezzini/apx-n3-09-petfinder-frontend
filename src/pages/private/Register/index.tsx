@@ -8,7 +8,7 @@ import Button from "../../../ui/Button";
 import FieldGroup from "../../../ui/FieldGroup";
 import InputField from "../../../ui/InputField";
 import InputFormError from "../../../ui/InputFormError";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { isAuthenticated } from "../../../utils/auth";
 import { useCreateAccount, useLogin } from "../../../hooks/login.hook";
@@ -17,12 +17,15 @@ import LoaderSpinner from "../../../ui/LoaderSpinner";
 
 export default function Register() {
   let navigate = useNavigate();
+  const location = useLocation();
+
+  // Ruta original si es que vino de algun lado a loguearse o "/" por defecto
+  const from = location.state?.from?.pathname || "/pets-state";
 
   // Redirect to pets-state if already authenticated
-  //! DESCOMENTAR CUANDO FUNCIONA TODO
-  // useEffect(() => {
-  //   if (isAuthenticated()) navigate("/pets-state");
-  // }, [isAuthenticated, navigate]);
+  useEffect(() => {
+    if (isAuthenticated()) navigate("/pets-state");
+  }, [isAuthenticated, navigate]);
   const [showLoader, setShowLoader] = useState(false);
   const { createAccount } = useCreateAccount();
   const { login } = useLogin();
@@ -44,7 +47,8 @@ export default function Register() {
       toast.success("Felicidades", {
         description: "Cuenta creada con éxito",
       });
-      navigate("/pets-state");
+      // Redirige a la ruta correspondiente
+      navigate(from, { replace: true });
     } catch (error: any) {
       setShowLoader(false);
       toast.error("Error de registro", {
@@ -102,7 +106,12 @@ export default function Register() {
           </form>
           <p className="text-gray-400">
             Ya tienes cuenta?{" "}
-            <Link className="text-primary hover:underline" to="/login">
+            <Link
+              replace
+              state={{ from: location.state?.from || location }}
+              className="text-primary hover:underline"
+              to="/login"
+            >
               Ingresar a la cuenta
             </Link>
           </p>

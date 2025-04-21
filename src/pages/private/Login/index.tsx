@@ -8,7 +8,7 @@ import SectionPrivateLayout from "../../../components/SectionPrivateLayout";
 import Button from "../../../ui/Button";
 import FieldGroup from "../../../ui/FieldGroup";
 import InputField from "../../../ui/InputField";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate, useLocation } from "react-router";
 import InputFormError from "../../../ui/InputFormError";
 import { useLogin } from "../../../hooks/login.hook";
 import { useState, useEffect } from "react";
@@ -17,6 +17,10 @@ import { isAuthenticated } from "../../../utils/auth";
 
 export default function Login() {
   let navigate = useNavigate();
+  const location = useLocation();
+
+  // Ruta original si es que vino de algun lado a loguearse o "/" por defecto
+  const from = location.state?.from?.pathname || "/pets-state";
 
   // Redirect to pets-state if already authenticated
   useEffect(() => {
@@ -42,7 +46,9 @@ export default function Login() {
       toast.success("Bienvenido", {
         description: "Haz iniciado sesion",
       });
-      navigate("/pets-state");
+
+      // Redirige a la ruta correspondiente
+      navigate(from, { replace: true });
     } catch (error: any) {
       setShowLoader(false);
       toast.error("Error de sesion", {
@@ -52,7 +58,7 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full bg-gray-light pb-16 min-h-full">
+    <div className="w-full bg-gray-light pb-16 min-h-full pt-24">
       <main className="container mx-auto pt-24 md:pt-36 sm:w-lg">
         <SectionPrivateLayout>
           <h4>Iniciar sesion</h4>
@@ -87,7 +93,12 @@ export default function Login() {
           </form>
           <p className="text-gray-400">
             No tienes cuenta?{" "}
-            <Link className="text-primary hover:underline" to="/register">
+            <Link
+              replace
+              state={{ from: location.state?.from || location }}
+              className="text-primary hover:underline"
+              to="/register"
+            >
               Crear una nueva cuenta
             </Link>
           </p>
