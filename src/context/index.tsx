@@ -10,7 +10,7 @@ import {
 } from "../../src/utils/types";
 
 // Atomo para la url base de la API
-export const urlBaseAtom = atom("http://localhost:3000/api");
+export const urlBaseAtom = atom("https://petrescueapxapi.up.railway.app/api");
 
 // Atomo para guardar la data del usuario + el token de auth con localStorage
 export const userWithTokenAtom = atomWithStorage<UserWithToken | null>(
@@ -34,9 +34,6 @@ export const petsAtom = atom<Pet[]>([]);
 
 // Atomo para las mascotas del usuario
 export const userPetsAtom = atom<Pet[]>([]);
-
-// // Atomo para la mascota y sus reportes
-// export const petWithReportsAtom = atom<PetAndReports[]>([]);
 
 // Atomo para el usuario con pets y reportes
 export const userPetsWithReportsAtom = atom<PetAndReports[]>([]);
