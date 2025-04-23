@@ -2,7 +2,7 @@
 
 Este proyecto es la implementación del frontend para la aplicación **PetFinder**, desarrollada como parte del nivel 3 de la academia APX. El objetivo principal es permitir a los usuarios buscar y reportar mascotas perdidas, utilizando una interfaz intuitiva y funcional. Tambien poder buscar mascotas que esten reportadas como perdidas filtradas por geolocalizacion cercana mejorando la experiencia de busqueda. Tambien pueden ver el listado y detalle de los reportes que reciben de otros usuarios sobre sus mascotas reportadas como asi tambien recibir por correo dicha alerta de avistaje.
 
-[Link a la app Pet Rescue](http://apx.school/)
+[Link a la app Pet Rescue](https://petrescueapx.up.railway.app/)
 
 ## Funcionalidades Principales
 
