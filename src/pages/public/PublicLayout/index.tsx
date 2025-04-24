@@ -4,7 +4,6 @@ import Navbar from "../../../components/Navbar";
 
 export default function PublicLayout() {
   let location = useLocation();
-  console.log("location", location.pathname);
 
   return (
     <>

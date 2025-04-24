@@ -8,8 +8,6 @@ import PetReportSkeleton from "../../../ui/PetResumeSkeleton";
 export default function ReportDetails() {
   const { petWithReports, isLoading, error } = useGetPetReports();
 
-  console.log(petWithReports);
-
   if (error) {
     return (
       <main className="container mx-auto sm:w-lg">

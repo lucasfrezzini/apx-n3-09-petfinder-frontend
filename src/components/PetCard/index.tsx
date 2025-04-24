@@ -12,9 +12,9 @@ export default function PetCard({ data }: PetCardProps) {
   const styles = clsx(defaultClasses);
   return (
     <div className={styles}>
-      <div className="rounded-xl">
+      <div className="rounded-xl aspect-3/2 overflow-hidden">
         <img
-          className="rounded-xl aspect-3/2 object-cover"
+          className="rounded-xl w-full h-full object-cover"
           src={data.images[0].url}
           alt={data.name}
         />

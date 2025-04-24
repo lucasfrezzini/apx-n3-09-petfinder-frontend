@@ -135,8 +135,6 @@ export default function NotifyPet() {
   const onSubmit = async (data: any) => {
     try {
       setShowLoader(true);
-      console.log("initial", data);
-
       await sendPetReport(data, pet.id);
 
       setShowLoader(false);
